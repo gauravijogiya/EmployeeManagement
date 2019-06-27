@@ -32,9 +32,12 @@ namespace CRUDcore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            //Injecting necessary services here
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<EmployeeContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
