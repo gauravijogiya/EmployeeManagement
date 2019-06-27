@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CRUDcore.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<h4>Emploeyye Register</h4>
+<hr/>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficeLocation)
+            </th>
+            <th> <a asp-action="AddorEdit" class="btn btn btn-outline-success"><i class="far fa-plus-square"></i>Employee</a></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeLocation)
+            </td>
+            <td>
+                <a asp-action="AddorEdit" asp-route-id="@item.EmployeID"><i class="fa fa-marker fa-lg"></i>Edit</a> |
+                @*<a asp-action="Details" asp-route-id="@item.EmployeID">Details</a>*@ |
+                <a asp-action="Delete" asp-route-id="@item.EmployeID" class="text-danger ml-1" onclick=" return alert('Are you sure delete this employee') "><i class="fa fa-trash-alt fa-lg"></i>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
